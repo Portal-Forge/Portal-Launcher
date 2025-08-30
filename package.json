@@ -1,0 +1,38 @@
+{
+    "name": "portal-launcher",
+    "version": "0.0.1",
+    "main": "main.js",
+    "scripts": {
+      "start": "electron-forge start",
+      "build": "electron-forge make"
+    },
+    "dependencies": {
+      "axios": "^1.6.0",
+      "steam-game-path": "^1.0.2",
+      "vdf": "^0.0.2"
+    },
+    "devDependencies": {
+      "electron": "^26.2.0",
+      "@electron-forge/cli": "^6.3.0",
+      "@electron-forge/maker-dmg": "^6.3.0"
+    },
+    "config": {
+      "forge": {
+        "packagerConfig": {
+          "asar": false,
+          "icon": "resources/logo.icns",
+          "extraResource": ["src"] 
+        },
+        "makers": [
+          {
+            "name": "@electron-forge/maker-dmg",
+            "config": {
+              "name": "Portal Launcher",
+              "icon": "resources/logo.icns"
+            }
+          }
+        ]
+      }
+    }
+  }
+  

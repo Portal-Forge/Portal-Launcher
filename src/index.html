@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Launcher</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css2?family=Lato&display=swap);
+        @import url(https://fonts.googleapis.com/css2?family=Open+Sans&display=swap);
+        @import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined);
+    </style>
+</head>
+<body>
+    <div id="portal-launcher">
+        <div class="flex h-screen bg-[#1a1a1a] text-white">
+            <div class="w-64 bg-[#232323] flex flex-col">
+                <div class="flex-1">
+                    <div class="mt-6 px-4">
+                        <h3 class="text-xs font-bold text-gray-400 mb-3">MY LIBRARY</h3>
+                        
+                        <div class="mb-3">
+                            <input type="text" 
+                                   id="library-filter"
+                                   placeholder="Filter library" 
+                                   class="w-full bg-[#2a2a2a] rounded-md px-3 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-gray-500"/>
+                        </div>
+
+                        <ul id="sidebar-library" class="space-y-1">
+                            <li class="text-center text-gray-500 py-4">
+                                <span class="material-symbols-outlined animate-spin">refresh</span>
+                                <div class="text-xs mt-1">Loading games...</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-1 flex flex-col">
+                <div class="flex items-center justify-between p-4 border-b border-gray-800">
+                    <div class="flex items-center">
+                        <span class="text-white">Home</span>
+                    </div>
+                    
+                    <div class="relative">
+                        <input type="text" 
+                               id="main-search"
+                               placeholder="Search games" 
+                               class="bg-[#333] rounded-md px-10 py-1.5 w-60 focus:outline-none focus:ring-1 focus:ring-gray-500"/>
+                        <span class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">search</span>
+                    </div>
+                </div>
+
+                <div class="flex-1 overflow-auto p-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-semibold text-gray-300">Your Games</h2>
+                        <div class="flex items-center space-x-2 text-sm text-gray-400">
+                            <span id="games-count">Loading...</span>
+                            <button id="refresh-games" class="ml-4 p-2 bg-[#2a2a2a] rounded-md hover:bg-[#333] transition-colors">
+                                <span class="material-symbols-outlined text-sm">refresh</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex space-x-3 mb-6">
+                        <button id="sort-name" class="sort-btn flex items-center space-x-2 bg-[#2a2a2a] hover:bg-[#333] transition-colors rounded-md px-3 py-1.5 text-sm active">
+                            <span class="material-symbols-outlined text-sm">sort_by_alpha</span>
+                            <span>Name</span>
+                        </button>
+                        <button id="sort-playtime" class="sort-btn flex items-center space-x-2 bg-[#2a2a2a] hover:bg-[#333] transition-colors rounded-md px-3 py-1.5 text-sm">
+                            <span class="material-symbols-outlined text-sm">schedule</span>
+                            <span>Playtime</span>
+                        </button>
+                        <button id="sort-recent" class="sort-btn flex items-center space-x-2 bg-[#2a2a2a] hover:bg-[#333] transition-colors rounded-md px-3 py-1.5 text-sm">
+                            <span class="material-symbols-outlined text-sm">access_time</span>
+                            <span>Recently Added</span>
+                        </button>
+                    </div>
+
+                    <div id="games-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                        <div class="col-span-full flex items-center justify-center py-16">
+                            <div class="text-center">
+                                <span class="material-symbols-outlined animate-spin text-4xl text-gray-400 mb-2">refresh</span>
+                                <p class="text-gray-400">Loading your Steam library...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            content: ["./src/**/*.{html,js}"],
+            theme: {
+                "name": "Bluewave",
+                "fontFamily": {
+                    "sans": [
+                        "Open Sans",
+                        "ui-sans-serif",
+                        "system-ui",
+                        "sans-serif",
+                        "\"Apple Color Emoji\"",
+                        "\"Segoe UI Emoji\"",
+                        "\"Segoe UI Symbol\"",
+                        "\"Noto Color Emoji\""
+                    ]
+                },
+                extend: {
+                    fontFamily: {
+                        title: ["Lato", "ui-sans-serif", "system-ui", "sans-serif"],
+                        body: ["Open Sans", "ui-sans-serif", "system-ui", "sans-serif"]
+                    },
+                    colors: {
+                        neutral: {
+                            50: "#f7f7f7", 100: "#eeeeee", 200: "#e0e0e0", 300: "#cacaca",
+                            400: "#b1b1b1", 500: "#999999", 600: "#7f7f7f", 700: "#676767",
+                            800: "#545454", 900: "#464646", 950: "#282828"
+                        },
+                        primary: {
+                            50: "#f3f1ff", 100: "#e9e5ff", 200: "#d5cfff", 300: "#b7a9ff",
+                            400: "#9478ff", 500: "#7341ff", 600: "#631bff", 700: "#611bf8",
+                            800: "#4607d0", 900: "#3c08aa", 950: "#220174", DEFAULT: "#611bf8"
+                        }
+                    }
+                }
+            },
+            plugins: [],
+            important: '#portal-launcher'
+        };
+    </script>
+</body>
+</html>
