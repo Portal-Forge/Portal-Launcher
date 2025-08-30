@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./resources/icon.png" width="144"/>
+<img src="./resources/logo.png" width="144"/>
 
 <h1 align="center">Portal Launcher - decided by a coin-flip</h1>
 
