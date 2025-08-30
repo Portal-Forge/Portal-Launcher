@@ -16,7 +16,7 @@
 
 ## Features
 
-- Add games that you own to your library automatically
+- Add games that you own & are downloaded to your library automatically
 - Sort your library easily
 
 
